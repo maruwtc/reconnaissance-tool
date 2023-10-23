@@ -30,13 +30,22 @@ if st.button('Whois'):
 
     st.subheader('DNS records')
 
+def perform_dns_recon(whois_url):
+    result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
+    return result.stdout
+
+st.title('DNS Reconnaissance Tool')
+whois_url = st.text_input('Enter the domain for DNS reconnaissance:')
 if st.button('DNS Reconn'):
-    with st.spinner('Scanning...'):
-        result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
-        if result.stderr != '':
-            st.code(result.stderr)
-        else:
-            st.write(result.stdout)
+    if whois_url:
+        with st.spinner('Scanning...'):
+            dns_result = perform_dns_recon(whois_url)
+            if dns_result:
+                st.code(dns_result, language='text')
+            else:
+                st.write('No DNS reconnaissance results found for the given domain.')
+    else:
+        st.warning('Please enter a domain for DNS reconnaissance.')
 
 st.divider()
 
