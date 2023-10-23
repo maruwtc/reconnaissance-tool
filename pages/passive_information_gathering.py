@@ -5,6 +5,7 @@ import platform
 import subprocess
 import whois
 import pandas as pd
+import sys
 
 st.subheader('Domian Analysis')
 whois_url = st.text_input('Enter domain name')
@@ -32,11 +33,14 @@ if st.button('Whois'):
     st.subheader('DNS records')
 
 if st.button('DNS Reconn'):
-    result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
-    if result.stderr != '':
-        st.code(result.stderr)
-    else:
-        st.code(result.stdout)
+    result = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    while True:
+        out = result.stdout.read(1)
+        if result.poll() is not None:
+            break
+        if out != '':
+            sys.stdout.buffer.write(out)
+            sys.stdout.flush()
 
 st.divider()
 
