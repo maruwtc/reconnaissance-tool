@@ -4,6 +4,7 @@ import platform
 import subprocess
 import whois
 import pandas as pd
+import threading
 
 st.subheader('Domian Analysis')
 whois_url = st.text_input('Enter domain name')
@@ -30,22 +31,23 @@ if st.button('Whois'):
 
     st.subheader('DNS records')
 
+def run_command(command):
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    while True:
+        output = process.stdout.readline()
+        if output == '' and process.poll() is not None:
+            break
+        if output:
+            st.text(output.strip())
+    stderr_output = process.stderr.read()
+    if stderr_output:
+        st.code(stderr_output)
+
 if st.button('DNS Reconn'):
-    process = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-    with st.spinner('Running DNS Reconn...'):
-        while True:
-            output = process.stdout.readline()
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                st.text(output.strip())
-
-        stderr_output = process.stderr.read()
-        if stderr_output:
-            st.code(stderr_output)
-        else:
-            st.success('DNS Reconn completed successfully!')
+    whois_url = "example.com"  # Replace this with the actual URL you want to perform DNS recon on
+    thread = threading.Thread(target=run_command, args=(f'dnsrecon -d {whois_url}',))
+    thread.start()
+    st.text("Running DNS Reconn...")
 
 st.divider()
 
