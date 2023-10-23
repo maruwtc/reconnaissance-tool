@@ -1,11 +1,9 @@
 import streamlit as st
 from subprocess import run
-from osoperator import operator
 import platform
 import subprocess
 import whois
 import pandas as pd
-import sys
 
 st.subheader('Domian Analysis')
 whois_url = st.text_input('Enter domain name')
@@ -33,14 +31,21 @@ if st.button('Whois'):
     st.subheader('DNS records')
 
 if st.button('DNS Reconn'):
-    result = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
-    st.text("DNS Reconn Output:")
-    output_container = st.empty()
-    while True:
-        line = result.stdout.readline()
-        if not line:
-            break
-        output_container.text(line)
+    process = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    with st.spinner('Running DNS Reconn...'):
+        while True:
+            output = process.stdout.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                st.text(output.strip())
+
+        stderr_output = process.stderr.read()
+        if stderr_output:
+            st.code(stderr_output)
+        else:
+            st.success('DNS Reconn completed successfully!')
 
 st.divider()
 
