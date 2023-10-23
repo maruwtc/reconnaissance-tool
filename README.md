@@ -1,6 +1,21 @@
 # Penetration Testing Project
 
-For windows please install perl first:
+Penetration Testing Project
+
+### Functions
+- Active Information Gathering
+    - Network Information
+    - Host information
+    - Subnet active host
+    - Usual Port Scan
+    - Ports with version
+- Passive Information Gathering
+    - Whois
+    - DNS information (linux only)
+    - Web vulnerability information (linux only)
+
+
+> For windows please install perl first:
 [Link](https://platform.activestate.com/ActiveState-Projects/ActiveState-Perl-5.36.0)
 
 ``` powershell
