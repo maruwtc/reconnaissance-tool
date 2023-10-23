@@ -5,12 +5,11 @@ import platform
 import subprocess
 import whois
 import pandas as pd
-import dnsrecon
 
-st.subheader('Whois')
+st.subheader('Domian Analysis')
 whois_url = st.text_input('Enter web address')
 show_results = st.empty()
-if st.button('Start'):
+if st.button('Whois'):
     whois_data = whois.whois(whois_url)
     st.write("Domain Name: "+whois_data.get("domain_name", None))
     st.write("Registrar: "+whois_data.get("registrar", None))
@@ -31,8 +30,6 @@ if st.button('Start'):
         st.write("No name servers found.")
 
     st.subheader('DNS records')
-
-st.divider()
 
 if st.button('DNS Reconn'):
     result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
