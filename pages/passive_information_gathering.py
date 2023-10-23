@@ -7,7 +7,7 @@ import whois
 import pandas as pd
 
 st.subheader('Domian Analysis')
-whois_url = st.text_input('Enter web address')
+whois_url = st.text_input('Enter domain name')
 show_results = st.empty()
 if st.button('Whois'):
     whois_data = whois.whois(whois_url)
