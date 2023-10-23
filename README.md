@@ -12,5 +12,10 @@ state use ActiveState-Perl-5.36.0
 Require Package
 
 ``` shell 
-pip install -r requirements.txt
+pip3 install -r requirements.txt
+```
+
+Run
+``` shell 
+stream run home.py
 ```
