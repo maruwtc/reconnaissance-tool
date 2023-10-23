@@ -31,11 +31,12 @@ if st.button('Whois'):
     st.subheader('DNS records')
 
 if st.button('DNS Reconn'):
-    result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
-    if result.stderr != '':
-        st.code(result.stderr)
-    else:
-        st.code(result.stdout)
+    with st.spinner('Scanning...'):
+        result = subprocess.run(f'dnsrecon -d {whois_url}', capture_output=True, shell=True, text=True)
+        if result.stderr != '':
+            st.code(result.stderr)
+        else:
+            st.code(result.stdout)
 
 st.divider()
 
