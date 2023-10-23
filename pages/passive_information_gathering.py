@@ -44,7 +44,6 @@ def run_command(command):
         st.code(stderr_output)
 
 if st.button('DNS Reconn'):
-    whois_url = "example.com"  # Replace this with the actual URL you want to perform DNS recon on
     thread = threading.Thread(target=run_command, args=(f'dnsrecon -d {whois_url}',))
     thread.start()
     st.text("Running DNS Reconn...")
