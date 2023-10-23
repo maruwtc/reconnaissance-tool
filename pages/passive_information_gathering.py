@@ -33,14 +33,14 @@ if st.button('Whois'):
     st.subheader('DNS records')
 
 if st.button('DNS Reconn'):
-    result = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    result = subprocess.Popen(f'dnsrecon -d {whois_url}', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    st.text("DNS Reconn Output:")
+    output_container = st.empty()
     while True:
-        out = result.stdout.read(1)
-        if result.poll() is not None:
+        line = result.stdout.readline()
+        if not line:
             break
-        if out != '':
-            sys.stdout.buffer.write(out)
-            sys.stdout.flush()
+        output_container.text(line)
 
 st.divider()
 
