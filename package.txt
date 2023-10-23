@@ -1,0 +1,9 @@
+streamlit 
+netifaces
+python3-nmap
+requests
+bs4
+
+---
+Windows:
+perl
