@@ -1,9 +1,0 @@
-streamlit 
-netifaces
-python3-nmap
-python-whois
-dnsrecon 
-
----
-Windows:
-perl
