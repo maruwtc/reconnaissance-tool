@@ -3,13 +3,13 @@
 Penetration Testing Project
 
 ### Functions
-- Active Information Gathering
+- Active Information Gathering [Done]
     - Network Information
     - Host information
     - Subnet active host
     - Usual Port Scan
     - Ports with version
-- Passive Information Gathering
+- Passive Information Gathering [Done]
     - Whois
     - DNS information (linux only)
     - Web vulnerability information (linux only)
