@@ -13,7 +13,27 @@ Penetration Testing Project
     - Whois
     - DNS information (linux only)
     - Web vulnerability information (linux only)
-
+- Vulnerability Analysis
+    - HTTP
+        - SQL injection
+        - NoSQL injection
+        - Bypass file upload
+    - Automated Vulnerability Scanners
+- Exploiting
+    - Reverse shell
+- Post Exploitation
+    - Privilege escalation - Linux
+    - Privilege escalation - Windows
+    - Bypass antivirus
+    - Loot and enumerate
+- Password Cracking
+- Network traffic analysis
+    - ARP spoofing
+    - DNS spoofing
+    - Wireshark
+- Wireless
+    - WEP
+    - WPS
 
 > For windows please install perl first:
 [Link](https://platform.activestate.com/ActiveState-Projects/ActiveState-Perl-5.36.0)
