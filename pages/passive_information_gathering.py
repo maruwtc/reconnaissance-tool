@@ -36,7 +36,7 @@ if st.button('DNS Reconn'):
         if result.stderr != '':
             st.code(result.stderr)
         else:
-            st.code(result.stdout)
+            st.write(result.stdout)
 
 st.divider()
 
