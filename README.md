@@ -11,6 +11,6 @@ state use ActiveState-Perl-5.36.0
 
 Require Package
 
-``` python 
+``` shell 
 pip install -r requirements.txt
 ```
