@@ -17,5 +17,5 @@ pip3 install -r requirements.txt
 
 Run
 ``` shell 
-stream run home.py
+streamlit run home.py
 ```
