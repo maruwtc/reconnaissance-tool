@@ -14,18 +14,9 @@ Penetration Testing Project
     - DNS information (linux only)
     - Web vulnerability information (linux only)
 - Vulnerability Analysis
-    - HTTP
-        - SQL injection
-        - NoSQL injection
-        - Bypass file upload
-    - Automated Vulnerability Scanners
-- Exploiting
-    - Reverse shell
-- Post Exploitation
-    - Privilege escalation - Linux
-    - Privilege escalation - Windows
-    - Bypass antivirus
-    - Loot and enumerate
+    - SQL injection
+    - NoSQL injection
+    - Bypass file upload
 - Password Cracking
 - Network traffic analysis
     - ARP spoofing
